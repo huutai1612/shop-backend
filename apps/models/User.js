@@ -68,16 +68,13 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.statics.findByCredential = async (email, password) => {
-	const user = User.findOne({ email });
+	const user = await User.findOne({ email });
+
+	if (!user) throw new Error('Invalid Email');
+
 	const isValidPassword = await bcrypt.compare(password, user.password);
 
-	if (!user) {
-		throw new Error('Invalid Email');
-	}
-
-	if (!isValidPassword) {
-		throw new Error('Invalid Password');
-	}
+	if (!isValidPassword) throw new Error('Invalid Password');
 
 	return user;
 };
