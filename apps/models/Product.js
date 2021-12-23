@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const options = {
+	timestamps: true,
+};
+
 const productSchema = new mongoose.Schema(
 	{
 		name: {
@@ -25,10 +29,13 @@ const productSchema = new mongoose.Schema(
 			required: true,
 			minlength: 6,
 		},
+		gender: {
+			type: String,
+			required: true,
+			lowercase: true,
+		},
 	},
-	{
-		timestamps: true,
-	},
+	options,
 );
 
 const ProductModel = mongoose.model('Product', productSchema);
