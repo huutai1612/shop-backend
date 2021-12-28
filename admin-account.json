@@ -1,0 +1,10 @@
+[
+	{
+		"name": "Ngo Hoang Huu Tai",
+		"email": "admin@admin.com",
+		"password": "Test123",
+		"age": 29,
+		"role": "ADMIN",
+		"address": "Admin address"
+	}
+]
